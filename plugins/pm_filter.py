@@ -576,7 +576,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         n=await i.edit('▣▣▣▣▣▣')
         await asyncio.sleep(1)
         await n.delete()
-        await query.answer("Extars...")
+        await query.answer("Extras...")
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
             text=script.EXTRAMOD_TXT,
@@ -603,8 +603,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "stats":
         buttons = [[
-            InlineKeyboardButton('👩‍🦯 Back', callback_data='help'),
-            InlineKeyboardButton('♻️REFRESH', callback_data='rfrsh')
+            InlineKeyboardButton('👩‍🦯 RETOUR', callback_data='help'),
+            InlineKeyboardButton('♻️RAFRAÎCHIR', callback_data='rfrsh')
         ]]
         r=await query.message.reply_text('▣▣▢▢▢▢')
         a=await r.edit('▣▣▣▢▢▢')
@@ -613,7 +613,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         n=await i.edit('▣▣▣▣▣▣')
         await asyncio.sleep(1)
         await n.delete()
-        await query.answer("Checking My Status...")
+        await query.answer("Vérification de mon statut...")
         reply_markup = InlineKeyboardMarkup(buttons)
         total = await Media.count_documents()
         users = await db.total_users_count()
@@ -628,10 +628,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
             parse_mode='html'
         )
     elif query.data == "rfrsh":
-        await query.answer("Refreshing...")
+        await query.answer("Actualisation...")
         buttons = [[
-            InlineKeyboardButton('👩‍🦯 Back', callback_data='help'),
-            InlineKeyboardButton('♻️REFRESH', callback_data='rfrsh')
+            InlineKeyboardButton('👩‍🦯 RETOUR', callback_data='help'),
+            InlineKeyboardButton('♻️RAFRAÎCHIR', callback_data='rfrsh')
         ]]
         r=await query.message.reply_text('▣▣▢▢▢▢')
         a=await r.edit('▣▣▣▢▢▢')
@@ -640,7 +640,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         n=await i.edit('▣▣▣▣▣▣')
         await asyncio.sleep(1)
         await n.delete()
-        await query.answer("Loading...")
+        await query.answer("Chargement...")
         reply_markup = InlineKeyboardMarkup(buttons)
         total = await Media.count_documents()
         users = await db.total_users_count()
@@ -659,8 +659,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         grpid = await active_connection(str(query.from_user.id))
 
         if str(grp_id) != str(grpid):
-            await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('✅Changed...')
+            await query.message.edit("Votre connexion active a été modifiée. Aller dans /settings.")
+            return await query.answer('✅Changé...')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
@@ -707,7 +707,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             ]
             reply_markup = InlineKeyboardMarkup(buttons)
             await query.message.edit_reply_markup(reply_markup)
-    await query.answer('What Are You Looking 🤔')
+    await query.answer('Que cherchez-vous 🤔')
 
 
 async def auto_filter(client, msg, spoll=False):
@@ -762,7 +762,7 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.append(
             [InlineKeyboardButton(text=f"🗓 1/{round(int(total_results) / 10)}", callback_data="pages"),
-             InlineKeyboardButton(text="NEXT ⏩", callback_data=f"next_{req}_{key}_{offset}")]
+             InlineKeyboardButton(text="Suiv.. ⏩", callback_data=f"next_{req}_{key}_{offset}")]
         )
     else:
         btn.append(
@@ -776,16 +776,16 @@ async def auto_filter(client, msg, spoll=False):
             title=imdb['title'],
             votes=imdb['votes'],
             aka=imdb["aka"],
-            seasons=imdb["seasons"],
+            seasons=imdb["Saisons"],
             box_office=imdb['box_office'],
             localized_title=imdb['localized_title'],
             kind=imdb['kind'],
             imdb_id=imdb["imdb_id"],
             cast=imdb["cast"],
             runtime=imdb["runtime"],
-            countries=imdb["countries"],
+            countries=imdb["Pays"],
             certificates=imdb["certificates"],
-            languages=imdb["languages"],
+            languages=imdb["langages"],
             director=imdb["director"],
             writer=imdb["writer"],
             producer=imdb["producer"],
@@ -803,7 +803,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"♨️Here Is The Result For Your Query <STRONG>{search}</STRONG>\n\n➥ 𝗝𝗼𝗶𝗻 ➼ @TmMainChannel"
+        cap = f"♨️Voici le résultat de votre requête <STRONG>{search}</STRONG>\n\n➥ 𝗝𝗼𝗶𝗻 ➼ @TmMainChannel"
     if imdb and imdb.get('poster'):
         try:
             autodelete = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024],
