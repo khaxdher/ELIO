@@ -91,10 +91,10 @@ async def start(client, message):
             InlineKeyboardButton('➕ ᴀᴊᴏᴜᴛᴇᴢ-ᴍᴏɪ ᴀ ᴠᴏs ɢʀᴏᴜᴘᴇs ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('🔍 ʀᴇᴄʜᴇʀᴄʜᴇʀ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Updates', url='https://t.me/TmMainChannel')
+            InlineKeyboardButton('🤖 𝐍𝐨𝐮𝐯𝐞𝐥𝐥𝐞𝐬', url='https://t.me/TmMainChannel')
         ], [
-            InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('ℹ️ 𝐀𝐈𝐃𝐄𝐒', callback_data='help'),
+            InlineKeyboardButton('🤔 𝐀 𝐏𝐑𝐎𝐏𝐎𝐒', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -111,7 +111,7 @@ async def start(client, message):
         file_id = data
         pre = ""
     if data.split("-", 1)[0] == "BATCH":
-        sts = await message.reply("Please wait")
+        sts = await message.reply("Veuillez patienter")
         file_id = data.split("-", 1)[1]
         msgs = BATCH_FILES.get(file_id)
         if not msgs:
@@ -121,7 +121,7 @@ async def start(client, message):
                     msgs=json.loads(file_data.read())
             except:
                 await sts.edit("FAILED")
-                return await client.send_message(LOG_CHANNEL, "UNABLE TO OPEN FILE.")
+                return await client.send_message(LOG_CHANNEL, "IMPOSSIBLE D’OUVRIR LE FICHIER.")
             os.remove(file)
             BATCH_FILES[file_id] = msgs
         for msg in msgs:
@@ -159,7 +159,7 @@ async def start(client, message):
         await sts.delete()
         return
     elif data.split("-", 1)[0] == "DSTORE":
-        sts = await message.reply("Please wait")
+        sts = await message.reply("Veuillez patienter")
         b_string = data.split("-", 1)[1]
         decoded = (base64.urlsafe_b64decode(b_string + "=" * (-len(b_string) % 4))).decode("ascii")
         try:
@@ -227,7 +227,7 @@ async def start(client, message):
             return
         except:
             pass
-        return await message.reply('No such file exist.')
+        return await message.reply('Aucun fichier de ce type n’existe.')
     files = files_[0]
     title = files.file_name
     size=get_size(files.file_size)
@@ -259,7 +259,7 @@ async def channel_info(bot, message):
     else:
         raise ValueError("Unexpected type of CHANNELS")
 
-    text = '📑 **Indexed channels/groups**\n'
+    text = '📑 **Canaux/groupes indexés**\n'
     for channel in channels:
         chat = await bot.get_chat(channel)
         if chat.username:
@@ -292,9 +292,9 @@ async def delete(bot, message):
     """Delete file from database"""
     reply = message.reply_to_message
     if reply and reply.media:
-        msg = await message.reply("Processing...⏳", quote=True)
+        msg = await message.reply("Traitement...⏳", quote=True)
     else:
-        await message.reply('Reply to file with /delete which you want to delete', quote=True)
+        await message.reply('Répondre au fichier avec /delete ce que vous souhaitez supprimer', quote=True)
         return
 
     for file_type in ("document", "video", "audio"):
@@ -302,7 +302,7 @@ async def delete(bot, message):
         if media is not None:
             break
     else:
-        await msg.edit('This is not supported file format')
+        await msg.edit('Ce format de fichier n’est pas pris en charge')
         return
     
     file_id, file_ref = unpack_new_file_id(media.file_id)
@@ -311,7 +311,7 @@ async def delete(bot, message):
         '_id': file_id,
     })
     if result.deleted_count:
-        await msg.edit('File is successfully deleted from database')
+        await msg.edit('Le fichier est supprimé de la base de données avec succès')
     else:
         file_name = re.sub(r"(_|\-|\.|\+)", " ", str(media.file_name))
         result = await Media.collection.delete_many({
@@ -320,7 +320,7 @@ async def delete(bot, message):
             'mime_type': media.mime_type
             })
         if result.deleted_count:
-            await msg.edit('File is successfully deleted from database')
+            await msg.edit('Le fichier est supprimé de la base de données avec succès')
         else:
             # files indexed before https://github.com/EvamariaTG/EvaMaria/commit/f3d2a1bcb155faf44178e5d7a685a1b533e714bf#diff-86b613edf1748372103e94cacff3b578b36b698ef9c16817bb98fe9ef22fb669R39 
             # have original file name.
@@ -330,25 +330,25 @@ async def delete(bot, message):
                 'mime_type': media.mime_type
             })
             if result.deleted_count:
-                await msg.edit('File is successfully deleted from database')
+                await msg.edit('Le fichier est supprimé de la base de données avec succès')
             else:
-                await msg.edit('File not found in database')
+                await msg.edit('Fichier introuvable dans la base de données')
 
 
 @Client.on_message(filters.command('deleteall') & filters.user(ADMINS))
 async def delete_all_index(bot, message):
     await message.reply_text(
-        'This will delete all indexed files.\nDo you want to continue??',
+        'Cela supprimera tous les fichiers indexés.\nVoulez-vous continuer??',
         reply_markup=InlineKeyboardMarkup(
             [
                 [
                     InlineKeyboardButton(
-                        text="⚠️DESTROY⚠️", callback_data="autofilter_delete"
+                        text="⚠️DÉTRUIRE⚠️", callback_data="autofilter_delete"
                     )
                 ],
                 [
                     InlineKeyboardButton(
-                        text="CANCEL", callback_data="close_data"
+                        text="ANNULER", callback_data="close_data"
                     )
                 ],
             ]
@@ -360,15 +360,15 @@ async def delete_all_index(bot, message):
 @Client.on_callback_query(filters.regex(r'^autofilter_delete'))
 async def delete_all_index_confirm(bot, message):
     await Media.collection.drop()
-    await message.answer('What Are You Looking 🤔')
-    await message.message.edit('Succesfully Deleted All The Indexed Files.')
+    await message.answer('Que cherchez-vous 🤔')
+    await message.message.edit('Suppression réussie de tous les fichiers indexés.')
 
 
 @Client.on_message(filters.command('settings'))
 async def settings(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply(f"You are anonymous admin. Use /connect {message.chat.id} in PM")
+        return await message.reply(f"Vous êtes administrateur anonyme. Utiliser /connect {message.chat.id} en PM")
     chat_type = message.chat.type
 
     if chat_type == "private":
@@ -379,10 +379,10 @@ async def settings(client, message):
                 chat = await client.get_chat(grpid)
                 title = chat.title
             except:
-                await message.reply_text("Make sure I'm present in your group!!", quote=True)
+                await message.reply_text("Assurez-vous que je sois présente dans votre groupe!!", quote=True)
                 return
         else:
-            await message.reply_text("I'm not connected to any groups!", quote=True)
+            await message.reply_text("Je ne suis connecté à aucun groupe!", quote=True)
             return
 
     elif chat_type in ["group", "supergroup"]:
