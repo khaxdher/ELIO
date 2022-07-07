@@ -39,7 +39,7 @@ async def index_files(bot, query):
     await msg.edit(
         "Indexation démarrée🤖",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton('Cancel', callback_data='index_cancel')]]
+            [[InlineKeyboardButton('Annuler', callback_data='index_cancel')]]
         )
     )
     try:
