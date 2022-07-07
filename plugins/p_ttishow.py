@@ -239,9 +239,9 @@ async def unban_a_user(bot, message):
 @Client.on_message(filters.command('users') & filters.user(ADMINS))
 async def list_users(bot, message):
     # https://t.me/GetTGLink/4184
-    raju = await message.reply('Getting List Of Users')
+    raju = await message.reply('Obtention de la liste des utilisateurs')
     users = await db.get_all_users()
-    out = "Users Saved In DB Are:\n\n"
+    out = "Les utilisateurs enregistrés dans la BD sont:\n\n"
     async for user in users:
         out += f"<a href=tg://user?id={user['id']}>{user['name']}</a>"
         if user['ban_status']['is_banned']:
@@ -256,9 +256,9 @@ async def list_users(bot, message):
 
 @Client.on_message(filters.command('chats') & filters.user(ADMINS))
 async def list_chats(bot, message):
-    raju = await message.reply('Getting List Of chats')
+    raju = await message.reply('Obtenir la liste des chats')
     chats = await db.get_all_chats()
-    out = "Chats Saved In DB Are:\n\n"
+    out = "Les chats enregistrés dans la BD sont:\n\n"
     async for chat in chats:
         out += f"**Title:** `{chat['title']}`\n**- ID:** `{chat['id']}`"
         if chat['chat_status']['is_disabled']:
