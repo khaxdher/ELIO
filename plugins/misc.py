@@ -20,7 +20,7 @@ async def showid(client, message):
         username = message.from_user.username
         dc_id = message.from_user.dc_id or ""
         await message.reply_text(
-            f"<b>➲ First Name:</b> {first}\n<b>➲ Last Name:</b> {last}\n<b>➲ Username:</b> {username}\n<b>➲ Telegram ID:</b> <code>{user_id}</code>\n<b>➲ Data Centre:</b> <code>{dc_id}</code>",
+            f"<b>➲ Prénom:</b> {first}\n<b>➲ Nom:</b> {last}\n<b>➲ Nom d'utilisateur:</b> {username}\n<b>➲ Telegram ID:</b> <code>{user_id}</code>\n<b>➲ Data Centre:</b> <code>{dc_id}</code>",
             quote=True
         )
 
@@ -58,10 +58,10 @@ async def showid(client, message):
 async def who_is(client, message):
     # https://github.com/SpEcHiDe/PyroGramBot/blob/master/pyrobot/plugins/admemes/whois.py#L19
     status_message = await message.reply_text(
-        "`Fetching user info...`"
+        "`Récupération des informations de l'utilisateur...`"
     )
     await status_message.edit(
-        "`Processing user info...`"
+        "`Traitement des informations de l'utilisateur...`"
     )
     from_user = None
     from_user_id, _ = extract_user(message)
@@ -73,14 +73,14 @@ async def who_is(client, message):
     if from_user is None:
         return await status_message.edit("no valid user_id / message specified")
     message_out_str = ""
-    message_out_str += f"<b>➲First Name:</b> {from_user.first_name}\n"
+    message_out_str += f"<b>➲Prénom:</b> {from_user.first_name}\n"
     last_name = from_user.last_name or "<b>None</b>"
-    message_out_str += f"<b>➲Last Name:</b> {last_name}\n"
+    message_out_str += f"<b>➲Nom:</b> {last_name}\n"
     message_out_str += f"<b>➲Telegram ID:</b> <code>{from_user.id}</code>\n"
     username = from_user.username or "<b>None</b>"
     dc_id = from_user.dc_id or "[User Doesn't Have A Valid DP]"
     message_out_str += f"<b>➲Data Centre:</b> <code>{dc_id}</code>\n"
-    message_out_str += f"<b>➲User Name:</b> @{username}\n"
+    message_out_str += f"<b>➲Nom d'utilisateur:</b> @{username}\n"
     message_out_str += f"<b>➲User 𝖫𝗂𝗇𝗄:</b> <a href='tg://user?id={from_user.id}'><b>Click Here</b></a>\n"
     if message.chat.type in (("supergroup", "channel")):
         try:
@@ -89,7 +89,7 @@ async def who_is(client, message):
                 chat_member_p.joined_date or time.time()
             ).strftime("%Y.%m.%d %H:%M:%S")
             message_out_str += (
-                "<b>➲Joined this Chat on:</b> <code>"
+                "<b>➲A rejoint ce chat le:</b> <code>"
                 f"{joined_date}"
                 "</code>\n"
             )
@@ -101,7 +101,7 @@ async def who_is(client, message):
             message=chat_photo.big_file_id
         )
         buttons = [[
-            InlineKeyboardButton('🔐 Close', callback_data='close_data')
+            InlineKeyboardButton('🔐 Fermer', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_photo(
@@ -115,7 +115,7 @@ async def who_is(client, message):
         os.remove(local_user_photo)
     else:
         buttons = [[
-            InlineKeyboardButton('🔐 Close', callback_data='close_data')
+            InlineKeyboardButton('🔐 Fermer', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(
@@ -130,11 +130,11 @@ async def who_is(client, message):
 @Client.on_message(filters.command(["imdb", 'search']))
 async def imdb_search(client, message):
     if ' ' in message.text:
-        k = await message.reply('Searching ImDB')
+        k = await message.reply('Recherche ImDB')
         r, title = message.text.split(None, 1)
         movies = await get_poster(title, bulk=True)
         if not movies:
-            return await message.reply("No results Found")
+            return await message.reply("Aucun résultat trouvé")
         btn = [
             [
                 InlineKeyboardButton(
@@ -144,11 +144,11 @@ async def imdb_search(client, message):
             ]
             for movie in movies
         ]
-        await k.edit('Here is what i found on IMDb', reply_markup=InlineKeyboardMarkup(btn))
+        await k.edit('Voici ce que j’ai trouvé sur IMDb', reply_markup=InlineKeyboardMarkup(btn))
         await asyncio.sleep(300)
         await k.delete()
     else:
-        await message.reply('Give me a movie / series Name')
+        await message.reply('Donnez-moi un nom de film / série')
 
 @Client.on_callback_query(filters.regex('^imdb'))
 async def imdb_callback(bot: Client, quer_y: CallbackQuery):
@@ -166,20 +166,20 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
     if imdb:
         caption = IMDB_TEMPLATE.format(
             query = imdb['title'],
-            title = imdb['title'],
+            title = imdb['titre'],
             votes = imdb['votes'],
             aka = imdb["aka"],
-            seasons = imdb["seasons"],
+            seasons = imdb["saisons"],
             box_office = imdb['box_office'],
             localized_title = imdb['localized_title'],
             kind = imdb['kind'],
             imdb_id = imdb["imdb_id"],
             cast = imdb["cast"],
             runtime = imdb["runtime"],
-            countries = imdb["countries"],
+            countries = imdb["pays"],
             certificates = imdb["certificates"],
-            languages = imdb["languages"],
-            director = imdb["director"],
+            languages = imdb["langages"],
+            director = imdb["directeur"],
             writer = imdb["writer"],
             producer = imdb["producer"],
             composer = imdb["composer"],
