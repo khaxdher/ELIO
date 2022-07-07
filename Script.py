@@ -1,10 +1,10 @@
 class script(object):
-    START_TXT = """𝙷𝙴𝙻L𝙾 {},
-𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 <a href=https://t.me/{}>{}</a>, 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚅𝙸𝙴𝚂, 𝙹𝚄𝚂𝚃 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙽𝙳 𝙴𝙽𝙹𝙾𝚈 😍"""
+    START_TXT = """Salut {},
+𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 <a href=https://t.me/{}>{}</a>, JE PEUX FOURNIR DES FILMS, IL SUFFIT DE M’AJOUTER À VOTRE GROUPE ET DE PROFITER 😍"""
     HELP_TXT = """𝙷𝙴𝚈 {}
 𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
     ABOUT_TXT = """✯ 𝙼𝚈 𝙽𝙰𝙼𝙴: {}
-✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: <a href=https://t.me/Technomindzyt><b><i>🐿🎀 𝑅𝒜𝒱𝐼𝒩𝒜𝒩𝒟𝒜𝒩 🎀🐿</i></b></a>
+✯ 𝙲𝚁𝙴𝙰𝚃𝙾𝚁: <a href=https://t.me/Philanthrpe><b><i>🐿💈 🅜🅐🅣🅡🅘🅧 💈🐿</i></b></a>
 ✯ 𝙻𝙸𝙱𝚁𝙰𝚁𝚈: 𝙿𝚈𝚁𝙾𝙶𝚁𝙰𝙼
 ✯ 𝙻𝙰𝙽𝙶𝚄𝙰𝙶𝙴: 𝙿𝚈𝚃𝙷𝙾𝙽 𝟹
 ✯ 𝙳𝙰𝚃𝙰 𝙱𝙰𝚂𝙴: 𝙼𝙾𝙽𝙶𝙾 𝙳𝙱
@@ -13,10 +13,10 @@ class script(object):
     SOURCE_TXT = """<b>NOTE:</b>
 - Techno Mindz is A Open Source Project. 
 - You Can Find The Repo Link Below 👇👇
-- Source - <a href=https://t.me/Technomindzchat><b><i>Techno Mindz</i></b></a>  
+- Source - <a href=https://t.me/VisionsT><b><i>Vision Team</i></b></a>  
 
 <b>DEVS:</b>
-- <a href=https://t.me/TechnoMINDZyT><b><i>🐿🎀  𝑅𝒜𝒱𝐼𝒩𝒜𝒩𝒟𝒜𝒩  🎀🐿</i></b></a>"""
+- <a href=https://t.me/Philanthrpe><b><i>🐿 💈 🅜🅐🅣🅡🅘🅧 💈🐿</i></b></a>"""
     MANUELFILTER_TXT = """Help: <b>Filters</b>
 
 - Filter is the feature were users can set automated replies for a particular keyword and Techno will respond whenever a keyword is found the message
@@ -55,11 +55,11 @@ class script(object):
     CONNECTION_TXT = """Help: <b>Connections</b>
 
 - Used to connect bot to PM for managing filters 
-- it helps to avoid spamming in groups.
+- il permet d’éviter le spamming dans les groupes.
 
 <b>NOTE:</b>
-1. Only admins can add a connection.
-2. Send <code>/connect</code> for connecting me to ur PM
+1. Seuls les administrateurs peuvent ajouter une connexion.
+2. Envoyer <code>/connect</code> pour me connecté à votre PM
 
 <b>Commands and Usage:</b>
 • /connect  - <code>connect a particular chat to your PM</code>
