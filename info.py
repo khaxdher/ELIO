@@ -19,7 +19,7 @@ BOT_TOKEN = environ['BOT_TOKEN']
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 USE_CAPTION_FILTER = bool(environ.get('USE_CAPTION_FILTER', True))
-PICS = (environ.get('PICS', 'https://telegra.ph/file/a2a1dac049b50dc7f8dfb.jpg https://telegra.ph/file/f0e8c7bcedc6e141674f1.jpg https://telegra.ph/file/24d6a1b2f30fb40685502.jpg https://telegra.ph/file/44db9096d48b3b0f452af.jpg https://telegra.ph/file/3fe9495c006ab895a473f.jpg')).split()
+PICS = (environ.get('PICS', 'https://telegra.ph/file/cac51913eeb36aa87ced8.jpg https://telegra.ph/file/29fcd8c85f29533dada01.jpg https://telegra.ph/file/ff0b38006ca65ad2ef1ed.jpg https://telegra.ph/file/df999ac6ce3411d4c4c38.jpg https://telegra.ph/file/f8ec4c7a2af320e86fe37.jpg')).split()
 
 # Admins, Channels & Users
 ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
