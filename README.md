@@ -22,7 +22,7 @@
 <details><summary>Deploy To Heroku</summary>
 <p>
 <br>
-<a href="https://heroku.com/deploy?template=https://github.com/TechnoMindz/IMDB_AutoDeleteRobot">
+<a href="https://heroku.com/deploy?template=https://github.com/SUPEREL/Elie">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 </p>
@@ -74,13 +74,13 @@
 ## CUSTOM FILE CAPTION
 ```
 <code>{file_name}</code>
-Made By @TmMainChannel
+Made By @VisionsTV
 
 ```
 ## CREATED BY
  
 * [RAVINANDAN](https://t.me/TechnoMINDZYT)
-## Selling The Codes To Other People For Money Is *Strictly Prohibited*.
+## Vendre les codes à d’autres personnes pour de l’argent est *strictement interdit*.
 
 ## Thanks to 
 
