@@ -22,7 +22,7 @@
 <details><summary>Deploy To Heroku</summary>
 <p>
 <br>
-<a href="https://heroku.com/deploy?template=https://github.com/SUPEREL/Elie">
+<a href="https://heroku.com/deploy?template=https://github.com/khaxdher/ELIO">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
 </p>
